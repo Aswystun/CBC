@@ -15,7 +15,7 @@ rsync --partial -arv SRR25297534.fastq <username>@asax.asc.edu:<path>
 ```
 # Trimming 
 
-We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
+We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic).
 
 
 ```bash
@@ -77,3 +77,5 @@ echo "✅ Trimming + QC finished. Results in:"
 echo "   $CLEAN"
 echo "   $QC"
 ```
+
+The output for this script are trimmed [R1](https://github.com/Aswystun/CBC/blob/main/Week2/SRR25297534_1_paired_fastqc.zip) and [R2](https://github.com/Aswystun/CBC/blob/main/Week2/SRR25297534_2_paired_fastqc.zip) paired reads. 
