@@ -2,21 +2,56 @@
 
 This project explores the genome of a butterfly sample (SRR25297534) using a comparative genomics approach. It includes quality control, trimming, assembly, and downstream analyses such as gene family evolution and synteny conservation.
 
-## Downloading SRA
-[You will need to install sra-toolkits](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit)
 
-Then download the data from [SRR25297534](https://www.ncbi.nlm.nih.gov/sra/?term=SRR25297534) using:
+
+## Downloading Data and Checking Quality
+
+To download directly to the ASC, you can call on the [sra-toolkits](https://github.com/ncbi/sra-tools) module. Then [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is used to inspect the quality of the data.
+
+
+
 ```bash
-fastq-dump SRR25297534
+########## Load Modules
+source /apps/profiles/modules_asax.sh.dyn
+module load sra
+module load fastqc/0.10.1
+
+
+MyID=[1]          ## Example: MyID=aubats001
+
+  ## Make variable that represents YOUR working directory(WD) in scratch, your Raw data directory (DD) and the pre or postcleaned status (CS).
+DD=[2]   			## Example: DD=/scratch/${MyID}/butterfly/RawData
+WD=[3]				## Example: WD=/scratch/${MyID}/butterfly
+RDQ=RawDataQuality
+ 
+##  make the directories in SCRATCH for holding the raw data 
+mkdir -p ${DD}
+## move to the Data Directory
+cd ${DD}
+
+vdb-config --interactive
+fastq-dump -F --split-files SRR25297534
+
+
+############## FASTQC to assess quality of the sequence data
+## The output from this analysis is a folder of results and a zipped file of results and a .html file.
+mkdir ${WD}/${RDQ}
+fastqc *.fastq --outdir=${WD}/${RDQ}
+
+#######  Tarball the directory containing the FASTQC results so we can easily bring it back to our computer to evaluate.
+cd ${WD}/${RDQ}
+tar cvzf ${RDQ}.tar.gz  ${WD}/${RDQ}/*
+## when finished use scp or rsync to bring the tarballed .gz results file to your computer and open the .html file to evaluate the quality of your raw data.
+
+
+
 ```
-## Moving Data to SuperComputer Environment
-This project will use the [Alabama Supercomputer](https://www.asc.edu/).
-To push data to the supercomputer, use:
-```bash
-rsync --partial -arv <local path and file> <ID:remote path to target folder>
-#For Example
-rsync --partial -arv SRR25297534.fastq <username>@asax.asc.edu:<path>
-```
+
+
+
+
+
+
 ## Trimming 
 
 We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic v0.39](http://www.usadellab.org/cms/?page=trimmomatic).
