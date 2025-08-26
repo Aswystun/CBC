@@ -15,7 +15,8 @@ rsync --partial -arv SRR25297534.fastq <username>@asax.asc.edu:<path>
 ```
 # Trimming 
 
-We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) for trimming reads. 
+We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
+
 
 ```bash
 #!/bin/bash
