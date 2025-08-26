@@ -73,7 +73,8 @@ This project explores the genome of a butterfly sample (SRR25297534) using a com
 
    ```bash
 
-   git clone https://github.com/Aswystun/CBC/tree/main/Week2
+   git clone https://github.com/Aswystun/CBC.git
+
 
    cd Week2
    
