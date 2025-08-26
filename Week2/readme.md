@@ -17,11 +17,11 @@ module load sra
 module load fastqc/0.10.1
 
 
-MyID=[1]          ## Example: MyID=aubats001
+MyID=aubats001
 
   ## Make variable that represents YOUR working directory(WD) in scratch, your Raw data directory (DD) and the pre or postcleaned status (CS).
-DD=[2]   			## Example: DD=/scratch/${MyID}/butterfly/RawData
-WD=[3]				## Example: WD=/scratch/${MyID}/butterfly
+DD=/scratch/${MyID}/butterfly/RawData
+WD=/scratch/${MyID}/butterfly
 RDQ=RawDataQuality
  
 ##  make the directories in SCRATCH for holding the raw data 
