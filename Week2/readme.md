@@ -81,12 +81,11 @@ This project explores the genome of a butterfly sample (SRR25297534) using a com
    
 2. Download data:
   
+   ```bash
 
-```bash
-
-bash download_FastQC.sh
-
-```
+   bash download_FastQC.sh
+  
+   ```
 
 3. Run trimming and QC:
 
