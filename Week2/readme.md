@@ -4,7 +4,7 @@ This project explores the genome of a butterfly sample (SRR25297534) using a com
 
 
 
-## Downloading Data and Checking Quality
+## [Downloading Data and Checking Quality](https://github.com/Aswystun/CBC/blob/main/Week2/download_FastQC.sh)
 
 To download directly to the ASC, you can call on the [sra-toolkits](https://github.com/ncbi/sra-tools) module. Then [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is used to inspect the quality of the data.
 
@@ -52,7 +52,7 @@ tar cvzf ${RDQ}.tar.gz  ${WD}/${RDQ}/*
 
 
 
-## Trimming 
+## [Trimming](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh)
 
 We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic v0.39](http://www.usadellab.org/cms/?page=trimmomatic).
 
@@ -120,7 +120,7 @@ echo "   $QC"
 The output for this script are trimmed [R1](https://github.com/Aswystun/CBC/blob/main/Week2/SRR25297534_1_paired_fastqc.zip) and [R2](https://github.com/Aswystun/CBC/blob/main/Week2/SRR25297534_2_paired_fastqc.zip) paired reads. 
 
 
-## Assembly
+## [Assembly](https://github.com/Aswystun/CBC/blob/main/Week2/Assemble_Genome.sh)
 The genome for SRR25297534 was assembled using [SPAdes](https://github.com/ablab/spades)
 
 ```bash
@@ -167,5 +167,4 @@ cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
 
 echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
 ```
-the output of this scrip
 
