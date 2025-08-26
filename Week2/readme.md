@@ -3,6 +3,133 @@
 This project explores the genome of a butterfly sample (SRR25297534) using a comparative genomics approach. It includes quality control, trimming, assembly, and downstream analyses such as gene family evolution and synteny conservation.
 
 
+## Data Source
+
+- NCBI SRA Accession: [SRR25297534](https://www.ncbi.nlm.nih.gov/sra/?term=SRR25297534)
+
+- Paired-end Illumina sequencing reads
+
+
+
+## Methods
+
+### 1. Quality Control
+
+- Tool: FastQC
+
+- Output: HTML and summary reports for raw and trimmed reads
+
+
+
+### 2. Trimming
+
+- Tool: Trimmomatic v0.39
+
+- Parameters: Adapter removal
+
+
+
+### 3. Genome Assembly
+
+- Tool: SPAdes
+
+- Input: Trimmed FASTQ files
+
+- Output: Assembled contigs (FASTA)
+
+
+
+### 4. Comparative Genomics
+
+- Reference Genomes: Heliconius melpomene, Bombyx mori, Danaus plexippus
+
+- Analyses:
+
+  - Genome statistics (size, N50, GC content)
+
+  - Gene family evolution (OrthoFinder)
+
+  - Synteny analysis (MUMmer)
+
+  - Phylogenetic tree construction
+
+
+
+## Goals
+
+- Assess genome quality and completeness
+
+- Identify expanded or contracted gene families
+
+- Compare synteny blocks across butterfly species
+
+- Visualize genomic relationships and evolutionary patterns
+
+
+
+## How to Run the Pipeline
+
+1. Clone this repository:
+
+   ```bash
+
+   git clone https://github.com/Aswystun/CBC/tree/main/Week2
+
+   cd Week2
+   
+   ```
+   
+2. Download data:
+  
+
+```bash
+
+bash download_FastQC.sh
+
+```
+
+3. Run trimming and QC:
+
+   ```bash
+
+   bash trim_and_qc.sh
+
+   ```
+
+4. Assemble genome:
+
+   ```bash
+
+   bash assemble_genome.sh
+
+   ```
+
+5. Launch R and run analysis:
+
+   ```r
+
+   source("scripts/R_pipeline.R")
+
+   results <- main_analysis()
+
+   ```
+
+
+
+## Folder Structure
+
+- `data/`: Raw and trimmed FASTQ files
+
+- `results/`: Assembly, QC, and analysis outputs
+
+- `figures/`: Visualizations and plots
+
+- `scripts/`: Bash and R scripts
+
+- `logs/`: Log files
+
+
+
 
 ## [Downloading Data and Checking Quality](https://github.com/Aswystun/CBC/blob/main/Week2/download_FastQC.sh)
 
@@ -167,4 +294,25 @@ cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
 
 echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
 ```
+
+## Citations
+
+- Prjibelski, A., Antipov, D., Meleshko, D., Lapidus, A. and Korobeynikov, A., 2020. Using SPAdes de novo assembler. Current protocols in bioinformatics, 70(1), p.e102.
+
+- Bolger, A.M., Lohse, M. and Usadel, B., 2014. Trimmomatic: a flexible trimmer for Illumina sequence data. Bioinformatics, 30(15), pp.2114-2120.
+
+
+
+- Reference Genomes:
+
+
+  1)Heliconius melpomene: Heliconius Genome Consortium (2012). Butterfly genome reveals promiscuous exchange of mimicry adaptations among species. Nature, 487, 94-98.
+
+
+
+  2) Bombyx mori: Xia, Q. et al. (2004). A draft sequence for the genome of the domesticated silkworm (Bombyx mori). Science, 306, 1937-1940.
+
+
+
+  3) Danaus plexippus: Zhan, S. et al. (2011). The genetics of monarch butterfly migration and warning coloration. Nature, 514, 317-321.
 
