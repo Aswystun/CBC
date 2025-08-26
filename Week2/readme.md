@@ -1,11 +1,15 @@
-# Downloading SRA
+# Project Overview
+
+This project explores the genome of a butterfly sample (SRR25297534) using a comparative genomics approach. It includes quality control, trimming, assembly, and downstream analyses such as gene family evolution and synteny conservation.
+
+## Downloading SRA
 [You will need to install sra-toolkits](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit)
 
 Then download the data from [SRR25297534](https://www.ncbi.nlm.nih.gov/sra/?term=SRR25297534) using:
 ```bash
 fastq-dump SRR25297534
 ```
-# Moving Data to SuperComputer Environment
+## Moving Data to SuperComputer Environment
 This project will use the [Alabama Supercomputer](https://www.asc.edu/).
 To push data to the supercomputer, use:
 ```bash
@@ -13,9 +17,9 @@ rsync --partial -arv <local path and file> <ID:remote path to target folder>
 #For Example
 rsync --partial -arv SRR25297534.fastq <username>@asax.asc.edu:<path>
 ```
-# Trimming 
+## Trimming 
 
-We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic).
+We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/trimmingCBC.sh) to trim low quality regions from the reads using [Trimmomatic v0.39](http://www.usadellab.org/cms/?page=trimmomatic).
 
 
 ```bash
@@ -81,7 +85,7 @@ echo "   $QC"
 The output for this script are trimmed [R1](https://github.com/Aswystun/CBC/blob/main/Week2/SRR25297534_1_paired_fastqc.zip) and [R2](https://github.com/Aswystun/CBC/blob/main/Week2/SRR25297534_2_paired_fastqc.zip) paired reads. 
 
 
-# Assembly
+## Assembly
 The genome for SRR25297534 was assembled using [SPAdes](https://github.com/ablab/spades)
 
 ```bash
@@ -128,5 +132,5 @@ cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
 
 echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
 ```
-
+the output of this scrip
 
