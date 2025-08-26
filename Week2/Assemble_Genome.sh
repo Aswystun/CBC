@@ -3,7 +3,7 @@
 # ============================================================================
 # Butterfly Genomics Project: Genome Assembly with SPAdes
 # ============================================================================
-# Purpose: Assemble genome from SRR25297534 trimmed paired-end FASTQ data
+# Purpose: Assemble genome from SRR25297534 trimmed paired-end FASTQ data, By Samira S.
 # Recommended ASC parameters:
 #   - Cores: 6+
 #   - Time limit: 08:00:00
