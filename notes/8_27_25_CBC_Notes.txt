@@ -1,0 +1,26 @@
+8.27.25 - CBC Notes
+
+Ti/Tv fundamental ratio across all genomic analyses. 
+
+Transition/Transversion (Ti/Tv) Ratio:
+This ratio is a metric used in genetic studies to assess the quality of single nucleotide polymorphisms (SNPs) and to understand DNA sequence evolution.
+What it measures:
+It compares the frequency of transitions (substitutions between purines or pyrimidines, e.g., A to G or C to T) and transversions (substitutions between a purine and a pyrimidine, e.g., A to C or T to G).
+Significance:
+The ratio is used for quality control in high-throughput sequencing data, as it is known to be influenced by factors like genome regions and DNA content.
+
+
+
+mapping can also take care of trimming, trim b=vs untrimmed, map it, see if there is a difference (there shouldn't be, but there might be.)
+
+BWA (Burrows-Wheeler Aligner) is a software tool for aligning short DNA sequencing reads (like those from Illumina) to a large reference genome
+
+
+fastp
+A tool designed to provide ultrafast all-in-one preprocessing and quality control for FastQ data.
+
+
+Kraken is an ultrafast and highly accurate program for assigning taxonomic labels to metagenomic DNA sequences. 
+
+
+
