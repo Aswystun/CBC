@@ -135,9 +135,10 @@ This project explores the genome of a butterfly sample (SRR25297534) using a com
 
 To download directly to the ASC, you can call on the [sra-toolkits](https://github.com/ncbi/sra-tools) module. Then [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is used to inspect the quality of the data.
 
-
+Make sure to change the ID to your username to make the scripts work appropriately.
 
 ```bash
+
 ########## Load Modules
 source /apps/profiles/modules_asax.sh.dyn
 module load sra
@@ -170,8 +171,6 @@ cd ${WD}/${RDQ}
 tar cvzf ${RDQ}.tar.gz  ${WD}/${RDQ}/*
 ## when finished use scp or rsync to bring the tarballed .gz results file to your computer and open the .html file to evaluate the quality of your raw data.
 
-
-
 ```
 
 
@@ -185,6 +184,7 @@ We utilize [This bash script](https://github.com/Aswystun/CBC/blob/main/Week2/tr
 
 
 ```bash
+
 #!/bin/bash
 
 # loading required modules for scrip
@@ -262,6 +262,7 @@ The output for this script are trimmed [R1](https://github.com/Aswystun/CBC/blob
 The genome for SRR25297534 was assembled using [SPAdes](https://github.com/ablab/spades)
 
 ```bash
+
 #!/bin/bash
 
 # ============================================================================
@@ -304,6 +305,7 @@ spades.py \
 cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
 
 echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
+
 ```
 
 ## Citations
