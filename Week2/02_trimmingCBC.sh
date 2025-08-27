@@ -1,31 +1,41 @@
 #!/bin/bash
 
-# loading required modules for script
+# loading required modules for scrip
+source /apps/profiles/modules_asax.sh.dyn
 module load trimmomatic/0.39
-module load fastqc
+module load fastqc/0.10.1
+
+MyID=aubats001
+
 
 # naming directories as variables for ease of use later on
 # change paths as needed for project, using temporary scratch for storage purposes
-RAWDATA=/home/aubscb001/CBC/RawData
-CLEAN=$PBS_O_WORKDIR/CBC/CleanData
-QC=$PBS_O_WORKDIR/CBC/PostCleanQC
+WD=/scratch/${MyID}/butterfly
+RAWDATA=/scratch/${MyID}/butterfly/RawData
+CLEAN=/scratch/${MyID}/butterfly/CleanData
+QC=/scratch/${MyID}/butterfly/PostCleanQC
+ADAPTERS=/scratch/${MyID}/butterfly/Adapters
+
 
 # making the required directories if they do not already exist
 mkdir -p $CLEAN
 mkdir -p $QC
+mkdir -p $ADAPTERS
 
 # progress checks on status of script running
-echo "Starting trimming in $PBS_O_WORKDIR"
+echo "Starting trimming in $WD"
 echo "RAWDATA dir: $RAWDATA"
 echo "CLEAN dir:   $CLEAN"
 echo "QC dir:      $QC"
 
-# this file has the adaptors that will be looped over and trimmed in each of the SRR files
-# the file was downloaded from GitHub
-ADAPTERS=/home/aubscb001/adapters/TruSeq3-PE.fa
+# Download adapters from Trimmomatic GitHub
+cd ${ADAPTERS}
+wget https://raw.githubusercontent.com/usadellab/Trimmomatic/main/adapters/TruSeq3-PE.fa
+cd ${WD}
 
+ADAPTER3=/scratch/${MyID}/butterfly/Adapters/TruSeq3-PE.fa
 
-# loop through all R1 FASTQ files (works for .fastq and .fastq.gz) with safety checks. Parameters chosen based on general recommendations 
+# loop through all R1 FASTQ files (works for .fastq and .fastq.gz) with safety checks. Parameters chosen based on general recommendations
 # from the trimmomatic manual
 for R1 in $RAWDATA/*_1.fastq*; do
     # Skip if no files matched
@@ -55,4 +65,3 @@ done
 echo "✅ Trimming + QC finished. Results in:"
 echo "   $CLEAN"
 echo "   $QC"
-
