@@ -1,5 +1,6 @@
 # Week 4 Homework
-#### This Directory is my record of using the tool [TERRACE](https://github.com/Shao-Group/TERRACE) on RNAseq data of _____ __________. 
+#### This Directory is my record of using the tool [TERRACE](https://github.com/Shao-Group/TERRACE) on total paired-end RNAseq data of *Felis catus*
+
 
 ## [Installation](https://bioconda.github.io/recipes/terrace/README.html)
 ### Option 1 
