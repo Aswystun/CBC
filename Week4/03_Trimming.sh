@@ -12,12 +12,20 @@ WD=/scratch/${MyID}/Felis_catus
 DD=/scratch/${MyID}/Felis_catus/RawData
 CD=/scratch/${MyID}/Felis_catus/CleanData
 PCQ=PostCleanQuality
-
-#adapters= NEED ADAPTERS
+ADAPTERS=/scratch/${MyID}/Felis_catus/Adapters
 
 
 mkdir ${CD}
 mkdir ${WD}/${PCQ}
+mkdir -p $ADAPTERS
+
+
+
+# Download adapters from Trimmomatic GitHub
+cd ${ADAPTERS}
+wget https://raw.githubusercontent.com/usadellab/Trimmomatic/main/adapters/TruSeq3-PE.fa
+cd ${WD}
+ADAPTER3=/scratch/${MyID}/Felis_catus/Adapters/TruSeq3-PE.fa
 
 ## Move to Raw Data Directory
 cd ${DD}
