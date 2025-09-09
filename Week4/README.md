@@ -50,6 +50,30 @@ Installation with Docker container:
 
 
 
+## Downloading Data
+
+Install sra-toolkit if not previously installed:
+```bash
+mamba install -c bioconda sra-tools
+```
+
+Making directories to install data
+
+```bash
+
+mkdir Felis_catus_RNA
+cd Felis_catus_RNA
+
+```
+
+RNA-seq of Felis catus: spleen
+[SRR3218716](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR3218716&display=metadata)
+
+```bash
+vdb-config --interactive
+fastq-dump -F --split-files SRR3218716
+```
+
 
 
 ## [Usage](https://github.com/Shao-Group/TERRACE?tab=readme-ov-file#usage)
