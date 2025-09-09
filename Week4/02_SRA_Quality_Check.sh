@@ -1,17 +1,24 @@
-#! /bin/bash
+########## Load Modules
 
+source /apps/profiles/modules_asax.sh.dyn
+module load fastqc/0.10.1
 
-DD=Felis_catus/RawData
-WD=Felis_catus
+#Change to your Supercomputer ID
+MyID=aubats001
+
+DD=/scratch/${MyID}/Felis_catus/RawData
+WD=/scratch/${MyID}/Felis_catus
 RDQ=RawDataQuality
 
+
+#make RDQ directory
+mkdir -p ${WD}/${RDQ}
 ## move to the Data Directory
 cd ${DD}
 
 
-mkdir ${WD}/${RDQ}
-fastqc *.fastq --outdir=${WD}/${RDQ}
+fastqc *.fastq --outdir=../${RDQ}
 
 
-cd ${WD}/${RDQ}
-tar cvzf ${RDQ}.tar.gz  ${WD}/${RDQ}/*
+cd ../${RDQ}
+tar cvzf ${RDQ}.tar.gz *

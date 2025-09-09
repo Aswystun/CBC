@@ -1,8 +1,15 @@
 #! /bin/bash
 
+########## Load Modules
+source /apps/profiles/modules_asax.sh.dyn
+module load sra
 
-DD=Felis_catus/Raw_Data
-WD=Felis_catus
+
+#Change to your Supercomputer ID
+MyID=aubats001
+
+DD=/scratch/${MyID}/Felis_catus/RawData
+WD=/scratch/${MyID}/Felis_catus
 RDQ=RawDataQuality
 
 
