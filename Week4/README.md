@@ -56,6 +56,11 @@ Install sra-toolkit if not previously installed:
 ```bash
 mamba install -c bioconda sra-tools
 ```
+Install fastqc if not previously installed:
+
+```bash
+sudo apt install fastqc
+```
 
 Making directories to install data
 
