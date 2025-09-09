@@ -133,7 +133,51 @@ tar cvzf ${PCQ}.tar.gz ${WD}/${PCQ}/*
 ```
 
 
-## 4. Assembly
+## 4. [Assembly](https://github.com/Aswystun/CBC/blob/main/Week4/04_Assembly.sh)
+
+```bash
+#!/bin/bash
+
+# ============================================================================
+# Purpose: Assemble genome from SRR25297534 trimmed paired-end FASTQ data, By Samira S.
+# Recommended ASC parameters:
+#   - Cores: 12
+#   - Time limit: 08:00:00
+#   - Memory: 64GB+
+########This script is still running with 6 cores, 12 hrs, and 64 GB! Needs some refinement in the future!########
+# ============================================================================
+
+# Load SPAdes module
+source /apps/profiles/modules_asax.sh.dyn
+module load spades
+
+# Define user and project variables
+MyID=aubats001
+ProjectName=Felis_catus
+SRR_ID=SRR3218716
+
+# Define directories
+WD=/scratch/$MyID/$ProjectName
+CD=$WD/CleanData             # trimmed FASTQ files location
+AD=$WD/results/assembly       # assembly output
+
+# Create assembly output directory
+mkdir -p $AD
+
+# Run SPAdes genome assembler with gzipped paired-end reads
+echo "Starting genome assembly for $SRR_ID..."
+spades.py \
+  --pe1-1 $CD/${SRR_ID}_1_paired.fastq.gz \
+  --pe1-2 $CD/${SRR_ID}_2_paired.fastq.gz \
+  -o $AD \
+  -t 6 -m 64
+
+# Rename output contigs file for convenience
+cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
+
+echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
+```
+
 
 
 # Moving Data from ASC to PC:
