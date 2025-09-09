@@ -2,10 +2,43 @@
 #### This Directory is my record of using the tool [TERRACE](https://github.com/Shao-Group/TERRACE) on total paired-end RNAseq data of *Felis catus*
 
 
-## [Installation](https://bioconda.github.io/recipes/terrace/README.html)
-### Option 1 
 
-You will need a conda-compatible package manager, like mamba
+
+
+
+## [ASC](https://www.asc.edu/)
+
+Scripts will be tailored to usage on the Alabama Supercomputer, which can make reproducibility difficult:
+
+
+
+## 1. Downloading Data
+
+RNA-seq of Felis catus: spleen
+[SRR3218716](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR3218716&display=metadata)
+
+(Still need adapters and reference genome)
+
+## 2. Raw Data Quality Assessment 
+
+## 3. Trimming 
+
+## 4. Assembly
+
+
+# Moving Data from ASC to PC:
+
+```bash
+
+
+```
+
+
+## 5. TERRACE [Installation](https://bioconda.github.io/recipes/terrace/README.html)
+
+#### 5a. Option 1 
+
+You will need a conda-compatible package manager, like mamba:
 
 ```bash
 
@@ -14,13 +47,13 @@ conda config --add channels bioconda
 conda install -c conda-forge mamba
 
 ```
-Now Install TERRACE
+Now Install TERRACE:
 
 ```bash
 mamba install terrace
 ```
 
-confirm installation 
+confirm installation:
 
 ```bash
 conda list terrace
@@ -31,7 +64,7 @@ This should return something like:
 terrace                    1.1.2            he153687_0       bioconda
 ```
 
-## Make sure it is up-to-date
+Make sure it is up-to-date:
 ```bash
 mamba update terrace
 ```
@@ -43,41 +76,12 @@ mamba create --name myenvname terrace
 
 
 
-### Option 2
+#### 5b. Option 2
 Installation with Docker container:
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/terrace/README.html)
 
 
 
-
-## Downloading Data
-
-Install sra-toolkit if not previously installed:
-```bash
-mamba install -c bioconda sra-tools
-```
-Install fastqc if not previously installed:
-
-```bash
-sudo apt install fastqc
-```
-
-Making directories to install data
-
-```bash
-
-mkdir Felis_catus_RNA
-cd Felis_catus_RNA
-
-```
-
-RNA-seq of Felis catus: spleen
-[SRR3218716](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR3218716&display=metadata)
-
-```bash
-vdb-config --interactive
-fastq-dump -F --split-files SRR3218716
-```
 
 
 
