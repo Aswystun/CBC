@@ -15,8 +15,8 @@ QC=PostCleanQuality
 ADAPTERS=/scratch/${MyID}/Felis_catus/Adapters
 
 
-mkdir -p ${CD}
-mkdir -p ${PCQ}
+mkdir -p $CLEAN
+mkdir -p $QC
 mkdir -p $ADAPTERS
 
 
