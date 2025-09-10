@@ -256,6 +256,26 @@ cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
 echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
 ``` 
 
+## Install miniforge
+
+```bash
+cd ~
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+bash Miniforge3-Linux-x86_64.sh
+
+```
+After install:
+```bash
+source ~/miniforge3/bin/activate
+conda init bash
+```
+This modifies your ~/.bashrc to make conda available automatically.
+
+source your .bashrc
+
+```bash
+source ~/.bashrc
+```
 
 
 ## 5. [TERRACE](https://github.com/Aswystun/CBC/blob/main/Week4/05_TERRACE.sh)
@@ -362,6 +382,7 @@ mamba create --name myenvname terrace
 #### 5c. Option 3 - move files from ASC to PC and:
 Installation with Docker container:
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/terrace/README.html)
+
 
 
 
