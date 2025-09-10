@@ -414,7 +414,7 @@ then install [IGV - windows installation](https://igv.org/doc/desktop/#DownloadP
 
 
 
-
+```bash
 .
 ├── 01_Download_Data.sh
 ├── 02_SRA_Quality_Check.sh
@@ -438,7 +438,7 @@ then install [IGV - windows installation](https://igv.org/doc/desktop/#DownloadP
     ├── Aligner.o7355
     ├── terrace.i7362
     └── terrace.o7362
-
+```
 1 directory, 24 files
 
 
@@ -446,6 +446,7 @@ then install [IGV - windows installation](https://igv.org/doc/desktop/#DownloadP
 
 
 ![TERRACE visualization](image.png)
+
 
 
 
