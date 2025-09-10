@@ -1,3 +1,5 @@
+#!/bin/bash
+
 
 source /apps/profiles/modules_asax.sh.dyn
 module load star/2.7.6a
