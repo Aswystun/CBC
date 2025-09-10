@@ -61,30 +61,3 @@ done
 echo "✅ Trimming + QC finished. Results in:"
 echo "   $CLEAN"
 echo "   $QC"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#########################  Now compress your results files from the Quality Assessment by FastQC 
-## move to the directory with the cleaned data
-cd ${WD}/${PCQ}
-
-#######  Tarball the directory containing the FASTQC results so we can easily bring it back to our computer to evaluate.
-tar cvzf ${PCQ}.tar.gz ${WD}/${PCQ}/*
