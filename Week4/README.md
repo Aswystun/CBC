@@ -445,5 +445,8 @@ then install [IGV - windows installation](https://igv.org/doc/desktop/#DownloadP
 
 
 
+![TERRACE visualization](image.png)
+
+
 
 
