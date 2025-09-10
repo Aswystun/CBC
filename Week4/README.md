@@ -258,8 +258,7 @@ echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
 
 
 
-## 5. TERRACE [Installation](https://bioconda.github.io/recipes/terrace/README.html)
-
+## 5. [TERRACE](https://github.com/Aswystun/CBC/blob/main/Week4/05_TERRACE.sh)
 
 
 #### 5a. Option 1 - **What we will be doing** - Using TERRACE on the ASC
@@ -319,7 +318,8 @@ samtools sort input.bam > input.sort.bam
 
 
 
-#### 5b. Option 2 - move files from ASC to PC and:
+#### 5b. Option 2 - move files from ASC to PC and: [Installation](https://bioconda.github.io/recipes/terrace/README.html)
+
 
 You will need a conda-compatible package manager, like mamba:
 
@@ -362,14 +362,6 @@ mamba create --name myenvname terrace
 #### 5c. Option 3 - move files from ASC to PC and:
 Installation with Docker container:
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/terrace/README.html)
-
-
-
-
-
-
-
-
 
 
 
