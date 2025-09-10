@@ -391,6 +391,31 @@ Installation with Docker container:
 
 
 
+## 6. Visualization.
+
+You will want to move these files over back to your PC
+
+/SRR3218716_Aligned.sortedByCoord.out.bam* 
+SRR3218716_terrace_output.gtf
+
+then install [IGV - windows installation](https://igv.org/doc/desktop/#DownloadPage/)
+
+- Select your genome (e.g., if Felis catus isn’t listed, you can load your own FASTA).
+
+- File > Load from File...
+
+- Load your BAM file (plus .bai index).
+
+- Load your GTF (TERRACE output).
+
+- Optionally load Ensembl GTF as reference.
+
+- Explore!
+
+
+
+
+.
 ├── 01_Download_Data.sh
 ├── 02_SRA_Quality_Check.sh
 ├── 03_Trimming.sh
@@ -400,7 +425,6 @@ Installation with Docker container:
 ├── FileTree.txt
 ├── README.md
 ├── RawDataQuality.tar.gz
-├── SRR3218716_terrace_output.gtf
 └── i.o_files
     ├── 01_Download.i7055
     ├── 01_Download.o7055
@@ -415,7 +439,8 @@ Installation with Docker container:
     ├── terrace.i7362
     └── terrace.o7362
 
-1 directory, 22 files
+1 directory, 24 files
+
 
 
 
