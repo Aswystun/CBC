@@ -1,0 +1,28 @@
+.
+├── 01_Download_Data.sh
+├── 02_SRA_Quality_Check.sh
+├── 03_Trimming.sh
+├── 04_STAR_Aligner.sh
+├── 04b_Assembly
+├── 05_TERRACE.sh
+├── FileTree.txt
+├── README.md
+├── RawDataQuality.tar.gz
+├── SRR3218716_Aligned.sortedByCoord.out.bam
+├── SRR3218716_Aligned.sortedByCoord.out.bam.bai
+├── SRR3218716_terrace_output.gtf
+└── i.o_files
+    ├── 01_Download.i7055
+    ├── 01_Download.o7055
+    ├── 02_trimming.i7070
+    ├── 02_trimming.o7070
+    ├── 03_Trimming.i7201
+    ├── 03_Trimming.o7201
+    ├── 04_Assembly.i7248
+    ├── 04_Assembly.o7248
+    ├── Aligner.i7355
+    ├── Aligner.o7355
+    ├── terrace.i7362
+    └── terrace.o7362
+
+1 directory, 24 files
