@@ -4,7 +4,11 @@
 source /apps/profiles/modules_asax.sh.dyn
 module load star/2.7.6a
 module load samtools/1.18
-module load miniforge3
+
+
+# Use personal Conda
+source ~/miniforge3/bin/activate
+conda activate terrace_env
 
 # Set Variables
 MyID=aubats001
@@ -20,13 +24,7 @@ FORWARD=${CLEAN}/SRR3218716_1_paired.fastq.gz
 read_length=$(zcat ${FORWARD} | sed -n '2p' | wc -m)
 echo "Detected read length: ${read_length}"
 
-# Activate Conda and install environment
-eval "$(conda shell.bash hook)"
-if ! conda env list | grep -q terrace_env; then
-    conda install -y mamba -n base -c conda-forge
-    mamba create -y -n terrace_env -c conda-forge -c bioconda terrace
-fi
-conda activate terrace_env
+
 
 
 terrace -i ${BAM_OUTPUT} \
