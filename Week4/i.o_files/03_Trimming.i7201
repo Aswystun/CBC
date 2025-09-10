@@ -1,0 +1,18 @@
+ 
+============================================================
+=====     Queued job information at submit time        =====
+============================================================
+  The submitted file is: 03_Trimming.sh
+  The time limit is 150:00:00 HH:MM:SS.
+  The target directory is: /home/aubats001/CBC/Week4
+  The memory limit is: 12gb
+  The job will start running after: 202509091653.54
+  Job Name: 03_Trimming
+  Queue: -q medium
+  Constraints: 
+  Command typed:
+/scripts/run_script 03_Trimming.sh     
+  Queue submit command:
+qsub -q medium -j oe -N 03_Trimming -a 202509091653.54 -r n -M ats0100@auburn.edu -l walltime=150:00:00 -l select=ncpus=6:mpiprocs=6:mem=12000mb 
+  Job number: 7201
+ 

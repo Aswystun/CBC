@@ -1,0 +1,98 @@
+setting asax scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: 05_TERRACE.sh
+  The time limit is 360:00:00 HH:MM:SS.
+  The target directory is: /home/aubats001/CBC/Week4
+  The working directory is:  /scratch-local/aubats001.terrace.7362.asax-pbs1
+  The memory limit is: 32gb
+  The job will start running after: 202509100702.30
+  Job Name: terrace
+  Queue: -q large
+  Constraints: 
+  Using  16  cores on master node  asax008.asc.edu
+  Node list:  asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu asax008.asc.edu
+  Cores:  16
+  Command typed:
+/scripts/run_script 05_TERRACE.sh     
+  Queue submit command:
+qsub -q large -j oe -N terrace -a 202509100702.30 -r n -M ats0100@auburn.edu -l walltime=360:00:00 -l select=ncpus=16:mpiprocs=16:mem=32000mb 
+Detected read length: 125
+parameters:
+read_length = 125
+min_pathscore = 1
+max_softclip_to_junction_gap = 100000
+min_junction_count = 10
+min_junction_count_ratio = 0.050000
+max_circ_vsize = 15
+max_single_exon_length = 2000
+max_multi_exon_length = 1000
+same_chain_circ_end_diff = 50
+alignment_boundary_error = 5
+max_fset_score = 1.500000
+min_soft_clip_len = 15
+min_jaccard = 0.900000
+fa_parameter = 1
+fe_parameter = 0
+r_parametetr = 0
+preview_only = F
+max_preview_reads = 2000000
+max_preview_spliced_reads = 50000
+min_preview_spliced_reads = 10000
+preview_infer_ratio = 0.850
+algo = TERRACE
+input_file = /scratch/aubats001/Felis_catus/aligned/SRR3218716_Aligned.sortedByCoord.out.bam
+output_file = /scratch/aubats001/Felis_catus/aligned/SRR3218716_terrace_output.gtf
+ref_file = 
+fasta_file = /scratch/aubats001/Felis_catus/Reference_Genome/genome.fa
+feature_file = 
+library_type = -1
+
+preview strandness: sampled reads = 2000000, single = 0, paired = 2000000, first = 0, second = 0, inferred = unstranded, given = empty
+preview insertsize: sampled reads = 1001846, isize = 157.74 +/- 47.74, median = 147, low = 84, high = 394
+circ_trst_map size = 38
+circ_trst_merged_map size = 38
+
+Printing all circRNAs
+circRNA_id:A1:138527727|138529090|138527727|138527838|138528997|138529090|, chrm:A1, bundle_size:7695, coverage:17, fake_count:17, supple_len:504, candidate_path_count:17, path_score:4199.243534, path_count_1:0, path_count_2:0, path_count_3:17, path_count_4:0, exon_count:2, total_exon_len:204, max_exon_len:111, min_exon_len:93, avg_exon_len:102.000000
+circRNA_id:A1:147589442|147602301|147589442|147589504|147602228|147602301|, chrm:A1, bundle_size:22581, coverage:1, fake_count:1, supple_len:54, candidate_path_count:1, path_score:41.246575, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:135, max_exon_len:73, min_exon_len:62, avg_exon_len:67.500000
+circRNA_id:A1:197777128|197783221|197777128|197777249|197780053|197780187|197780853|197781002|197783072|197783221|, chrm:A1, bundle_size:35644, coverage:1, fake_count:1, supple_len:60, candidate_path_count:1, path_score:700.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:4, total_exon_len:553, max_exon_len:149, min_exon_len:121, avg_exon_len:138.250000
+circRNA_id:A1:65737323|65737482|65737323|65737482|, chrm:A1, bundle_size:158, coverage:1, fake_count:1, supple_len:20, candidate_path_count:1, path_score:4.735849, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:1, total_exon_len:159, max_exon_len:159, min_exon_len:159, avg_exon_len:159.000000
+circRNA_id:A2:108579323|108586617|108579323|108579571|108583552|108583741|108586487|108586617|, chrm:A2, bundle_size:88, coverage:1, fake_count:1, supple_len:39, candidate_path_count:1, path_score:15.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:3, total_exon_len:567, max_exon_len:248, min_exon_len:130, avg_exon_len:189.000000
+circRNA_id:A2:11435210|11435745|11435210|11435577|11435692|11435745|, chrm:A2, bundle_size:11220, coverage:6, fake_count:6, supple_len:324, candidate_path_count:6, path_score:276.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:6, exon_count:2, total_exon_len:420, max_exon_len:367, min_exon_len:53, avg_exon_len:210.000000
+circRNA_id:A2:115951397|115952542|115951397|115951523|115952184|115952355|115952470|115952542|, chrm:A2, bundle_size:1008, coverage:1, fake_count:1, supple_len:18, candidate_path_count:1, path_score:25.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:3, total_exon_len:369, max_exon_len:171, min_exon_len:72, avg_exon_len:123.000000
+circRNA_id:A2:53868291|53868578|53868291|53868426|53868503|53868578|, chrm:A2, bundle_size:33910, coverage:2, fake_count:2, supple_len:38, candidate_path_count:2, path_score:516.000000, path_count_1:0, path_count_2:0, path_count_3:2, path_count_4:0, exon_count:2, total_exon_len:210, max_exon_len:135, min_exon_len:75, avg_exon_len:105.000000
+circRNA_id:A3:50269467|50272166|50269467|50269546|50272062|50272166|, chrm:A3, bundle_size:13204, coverage:1, fake_count:1, supple_len:27, candidate_path_count:1, path_score:12.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:183, max_exon_len:104, min_exon_len:79, avg_exon_len:91.500000
+circRNA_id:B1:147043720|147066468|147043720|147043799|147065736|147066468|, chrm:B1, bundle_size:1208, coverage:1, fake_count:1, supple_len:25, candidate_path_count:1, path_score:92.413934, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:2, total_exon_len:811, max_exon_len:732, min_exon_len:79, avg_exon_len:405.500000
+circRNA_id:B1:174623441|174648377|174623441|174623541|174634876|174634959|174644056|174644115|174648283|174648377|, chrm:B1, bundle_size:66812, coverage:1, fake_count:1, supple_len:18, candidate_path_count:1, path_score:68.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:4, total_exon_len:336, max_exon_len:100, min_exon_len:59, avg_exon_len:84.000000
+circRNA_id:B1:87768551|87768823|87768551|87768626|87768719|87768823|, chrm:B1, bundle_size:1975, coverage:1, fake_count:1, supple_len:48, candidate_path_count:1, path_score:125.778846, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:179, max_exon_len:104, min_exon_len:75, avg_exon_len:89.500000
+circRNA_id:B2:21543066|21544720|21543066|21543147|21543255|21543368|21544627|21544720|, chrm:B2, bundle_size:5599, coverage:1, fake_count:1, supple_len:59, candidate_path_count:1, path_score:11.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:3, total_exon_len:287, max_exon_len:113, min_exon_len:81, avg_exon_len:95.666667
+circRNA_id:B3:119311760|119318037|119311760|119311994|119312761|119312927|119317790|119318037|, chrm:B3, bundle_size:3454, coverage:1, fake_count:1, supple_len:25, candidate_path_count:1, path_score:29.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:3, total_exon_len:647, max_exon_len:247, min_exon_len:166, avg_exon_len:215.666667
+circRNA_id:B3:121138187|121138390|121138187|121138390|, chrm:B3, bundle_size:7097, coverage:1, fake_count:1, supple_len:27, candidate_path_count:1, path_score:122.645320, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:1, total_exon_len:203, max_exon_len:203, min_exon_len:203, avg_exon_len:203.000000
+circRNA_id:B3:47945418|47946123|47945418|47945733|47945978|47946123|, chrm:B3, bundle_size:2314, coverage:2, fake_count:2, supple_len:64, candidate_path_count:2, path_score:306.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:2, exon_count:2, total_exon_len:460, max_exon_len:315, min_exon_len:145, avg_exon_len:230.000000
+circRNA_id:B3:61106726|61107374|61106726|61106818|61107319|61107374|, chrm:B3, bundle_size:65158, coverage:1, fake_count:1, supple_len:37, candidate_path_count:1, path_score:93.380435, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:147, max_exon_len:92, min_exon_len:55, avg_exon_len:73.500000
+circRNA_id:B3:86386393|86388659|86386393|86386542|86387623|86387778|86388495|86388659|, chrm:B3, bundle_size:1356, coverage:1, fake_count:1, supple_len:39, candidate_path_count:1, path_score:56.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:3, total_exon_len:468, max_exon_len:164, min_exon_len:149, avg_exon_len:156.000000
+circRNA_id:C1:11508525|11509312|11508525|11508695|11509197|11509312|, chrm:C1, bundle_size:3760, coverage:1, fake_count:1, supple_len:59, candidate_path_count:1, path_score:62.205882, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:285, max_exon_len:170, min_exon_len:115, avg_exon_len:142.500000
+circRNA_id:C1:218031773|218084844|218031773|218031942|218084682|218084844|, chrm:C1, bundle_size:327, coverage:2, fake_count:2, supple_len:76, candidate_path_count:2, path_score:30.000000, path_count_1:0, path_count_2:0, path_count_3:2, path_count_4:0, exon_count:2, total_exon_len:331, max_exon_len:169, min_exon_len:162, avg_exon_len:165.500000
+circRNA_id:C1:55716110|55740017|55716110|55716135|55720930|55721076|55733312|55733474|55734075|55734208|55736128|55736193|55739944|55740017|, chrm:C1, bundle_size:1701, coverage:1, fake_count:1, supple_len:20, candidate_path_count:1, path_score:13.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:6, total_exon_len:604, max_exon_len:162, min_exon_len:25, avg_exon_len:100.666667
+circRNA_id:D1:14967464|15002132|14967464|14967605|14970559|14970699|15001407|15001504|15002043|15002132|, chrm:D1, bundle_size:1432, coverage:1, fake_count:1, supple_len:29, candidate_path_count:1, path_score:31.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:4, total_exon_len:467, max_exon_len:141, min_exon_len:89, avg_exon_len:116.750000
+circRNA_id:D1:69046011|69047670|69046011|69046146|69047553|69047670|, chrm:D1, bundle_size:6109, coverage:1, fake_count:1, supple_len:59, candidate_path_count:1, path_score:101.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:252, max_exon_len:135, min_exon_len:117, avg_exon_len:126.000000
+circRNA_id:D1:69252182|69258040|69252182|69252308|69252867|69252981|69253332|69253493|69253595|69253737|69253995|69254094|69254184|69254268|69254445|69254556|69254811|69254963|69255050|69255117|69255205|69255337|69256091|69256194|69256730|69256871|69257520|69257586|69257913|69258040|, chrm:D1, bundle_size:16132, coverage:1, fake_count:1, supple_len:39, candidate_path_count:4, path_score:148.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:14, total_exon_len:1625, max_exon_len:161, min_exon_len:66, avg_exon_len:116.071429
+circRNA_id:D1:8539826|8540250|8539826|8539973|8540166|8540250|, chrm:D1, bundle_size:2968, coverage:1, fake_count:1, supple_len:39, candidate_path_count:1, path_score:58.011905, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:231, max_exon_len:147, min_exon_len:84, avg_exon_len:115.500000
+circRNA_id:D2:57006290|57006379|57006290|57006379|, chrm:D2, bundle_size:12415, coverage:1, fake_count:1, supple_len:27, candidate_path_count:1, path_score:47.988764, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:1, total_exon_len:89, max_exon_len:89, min_exon_len:89, avg_exon_len:89.000000
+circRNA_id:D2:62239570|62248300|62239570|62239665|62244557|62244690|62245152|62245338|62248204|62248300|, chrm:D2, bundle_size:23892, coverage:1, fake_count:1, supple_len:54, candidate_path_count:1, path_score:70.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:4, total_exon_len:510, max_exon_len:186, min_exon_len:95, avg_exon_len:127.500000
+circRNA_id:D2:70306010|70308583|70306010|70306105|70308469|70308583|, chrm:D2, bundle_size:5381, coverage:1, fake_count:1, supple_len:51, candidate_path_count:1, path_score:135.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:209, max_exon_len:114, min_exon_len:95, avg_exon_len:104.500000
+circRNA_id:D3:45857074|45859099|45857074|45857175|45858621|45858937|45859028|45859099|, chrm:D3, bundle_size:5502, coverage:1, fake_count:1, supple_len:44, candidate_path_count:1, path_score:4.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:3, total_exon_len:488, max_exon_len:316, min_exon_len:71, avg_exon_len:162.666667
+circRNA_id:E1:2206642|2208012|2206642|2206759|2207426|2207498|2207729|2207848|2207945|2208012|, chrm:E1, bundle_size:97297, coverage:1, fake_count:1, supple_len:36, candidate_path_count:1, path_score:267.000000, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:4, total_exon_len:375, max_exon_len:119, min_exon_len:67, avg_exon_len:93.750000
+circRNA_id:E2:444349|445829|444349|445829|, chrm:E2, bundle_size:59066, coverage:1, fake_count:1, supple_len:15, candidate_path_count:1, path_score:1.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:1, total_exon_len:1480, max_exon_len:1480, min_exon_len:1480, avg_exon_len:1480.000000
+circRNA_id:E3:20844944|20848330|20844944|20845025|20845130|20845251|20845560|20845632|20846011|20846041|20846840|20846909|20847145|20847241|20847457|20847502|20847617|20847823|20848029|20848330|, chrm:E3, bundle_size:35852, coverage:1, fake_count:1, supple_len:33, candidate_path_count:1, path_score:19.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:1, exon_count:9, total_exon_len:1021, max_exon_len:301, min_exon_len:30, avg_exon_len:113.444444
+circRNA_id:E3:20846011|20848330|20846011|20846041|20846840|20846909|20847145|20847241|20847457|20847502|20847617|20847823|20848029|20848330|, chrm:E3, bundle_size:35852, coverage:4, fake_count:4, supple_len:112, candidate_path_count:4, path_score:104.000000, path_count_1:0, path_count_2:0, path_count_3:0, path_count_4:4, exon_count:6, total_exon_len:747, max_exon_len:301, min_exon_len:30, avg_exon_len:124.500000
+circRNA_id:F1:44854901|44855038|44854901|44855038|, chrm:F1, bundle_size:7626, coverage:1, fake_count:1, supple_len:27, candidate_path_count:1, path_score:39.700730, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:1, total_exon_len:137, max_exon_len:137, min_exon_len:137, avg_exon_len:137.000000
+circRNA_id:F1:67744994|67745162|67744994|67745162|, chrm:F1, bundle_size:12525, coverage:1, fake_count:1, supple_len:55, candidate_path_count:1, path_score:214.434524, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:1, total_exon_len:168, max_exon_len:168, min_exon_len:168, avg_exon_len:168.000000
+circRNA_id:F1:67747746|67751148|67747746|67747914|67750980|67751148|, chrm:F1, bundle_size:12525, coverage:1, fake_count:1, supple_len:24, candidate_path_count:1, path_score:201.470238, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:336, max_exon_len:168, min_exon_len:168, avg_exon_len:168.000000
+circRNA_id:X:1682353|1686457|1682353|1682416|1684065|1684128|1686394|1686457|, chrm:X, bundle_size:41283, coverage:1, fake_count:1, supple_len:15, candidate_path_count:1, path_score:16.761905, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:3, total_exon_len:189, max_exon_len:63, min_exon_len:63, avg_exon_len:63.000000
+circRNA_id:X:18394976|18400829|18394976|18395052|18400702|18400829|, chrm:X, bundle_size:82, coverage:1, fake_count:1, supple_len:51, candidate_path_count:1, path_score:4.685039, path_count_1:0, path_count_2:0, path_count_3:1, path_count_4:0, exon_count:2, total_exon_len:203, max_exon_len:127, min_exon_len:76, avg_exon_len:101.500000
+
+TERRACE run complete!

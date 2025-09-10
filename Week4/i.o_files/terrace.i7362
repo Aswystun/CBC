@@ -1,0 +1,18 @@
+ 
+============================================================
+=====     Queued job information at submit time        =====
+============================================================
+  The submitted file is: 05_TERRACE.sh
+  The time limit is 360:00:00 HH:MM:SS.
+  The target directory is: /home/aubats001/CBC/Week4
+  The memory limit is: 32gb
+  The job will start running after: 202509100702.30
+  Job Name: terrace
+  Queue: -q large
+  Constraints: 
+  Command typed:
+/scripts/run_script 05_TERRACE.sh     
+  Queue submit command:
+qsub -q large -j oe -N terrace -a 202509100702.30 -r n -M ats0100@auburn.edu -l walltime=360:00:00 -l select=ncpus=16:mpiprocs=16:mem=32000mb 
+  Job number: 7362
+ 

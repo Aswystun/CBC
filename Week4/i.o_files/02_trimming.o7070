@@ -1,0 +1,105 @@
+setting asax scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: 02_SRA_Quality_Check.sh
+  The time limit is 150:00:00 HH:MM:SS.
+  The target directory is: /home/aubats001/CBC/Week4
+  The working directory is:  /scratch-local/aubats001.02_trimming.7070.asax-pbs1
+  The memory limit is: 4gb
+  The job will start running after: 202509091302.36
+  Job Name: 02_trimming
+  Queue: -q medium
+  Constraints: 
+  Using  4  cores on master node  asax036.asc.edu
+  Node list:  asax036.asc.edu asax036.asc.edu asax036.asc.edu asax036.asc.edu
+  Cores:  4
+  Command typed:
+/scripts/run_script 02_SRA_Quality_Check.sh     
+  Queue submit command:
+qsub -q medium -j oe -N 02_trimming -a 202509091302.36 -r n -M ats0100@auburn.edu -l walltime=150:00:00 -l select=ncpus=4:mpiprocs=4:mem=4000mb 
+Started analysis of SRR3218716_1.fastq
+Approx 5% complete for SRR3218716_1.fastq
+Approx 10% complete for SRR3218716_1.fastq
+Approx 15% complete for SRR3218716_1.fastq
+Approx 20% complete for SRR3218716_1.fastq
+Approx 25% complete for SRR3218716_1.fastq
+Approx 30% complete for SRR3218716_1.fastq
+Approx 35% complete for SRR3218716_1.fastq
+Approx 40% complete for SRR3218716_1.fastq
+Approx 45% complete for SRR3218716_1.fastq
+Approx 50% complete for SRR3218716_1.fastq
+Approx 55% complete for SRR3218716_1.fastq
+Approx 60% complete for SRR3218716_1.fastq
+Approx 65% complete for SRR3218716_1.fastq
+Approx 70% complete for SRR3218716_1.fastq
+Approx 75% complete for SRR3218716_1.fastq
+Approx 80% complete for SRR3218716_1.fastq
+Approx 85% complete for SRR3218716_1.fastq
+Approx 90% complete for SRR3218716_1.fastq
+Approx 95% complete for SRR3218716_1.fastq
+Approx 100% complete for SRR3218716_1.fastq
+Analysis complete for SRR3218716_1.fastq
+Started analysis of SRR3218716_2.fastq
+Approx 5% complete for SRR3218716_2.fastq
+Approx 10% complete for SRR3218716_2.fastq
+Approx 15% complete for SRR3218716_2.fastq
+Approx 20% complete for SRR3218716_2.fastq
+Approx 25% complete for SRR3218716_2.fastq
+Approx 30% complete for SRR3218716_2.fastq
+Approx 35% complete for SRR3218716_2.fastq
+Approx 40% complete for SRR3218716_2.fastq
+Approx 45% complete for SRR3218716_2.fastq
+Approx 50% complete for SRR3218716_2.fastq
+Approx 55% complete for SRR3218716_2.fastq
+Approx 60% complete for SRR3218716_2.fastq
+Approx 65% complete for SRR3218716_2.fastq
+Approx 70% complete for SRR3218716_2.fastq
+Approx 75% complete for SRR3218716_2.fastq
+Approx 80% complete for SRR3218716_2.fastq
+Approx 85% complete for SRR3218716_2.fastq
+Approx 90% complete for SRR3218716_2.fastq
+Approx 95% complete for SRR3218716_2.fastq
+Approx 100% complete for SRR3218716_2.fastq
+Analysis complete for SRR3218716_2.fastq
+SRR3218716_1_fastqc/
+SRR3218716_1_fastqc/Icons/
+SRR3218716_1_fastqc/Icons/error.png
+SRR3218716_1_fastqc/Icons/fastqc_icon.png
+SRR3218716_1_fastqc/Icons/tick.png
+SRR3218716_1_fastqc/Icons/warning.png
+SRR3218716_1_fastqc/Images/
+SRR3218716_1_fastqc/Images/per_base_quality.png
+SRR3218716_1_fastqc/Images/per_sequence_quality.png
+SRR3218716_1_fastqc/Images/per_base_sequence_content.png
+SRR3218716_1_fastqc/Images/per_base_gc_content.png
+SRR3218716_1_fastqc/Images/per_sequence_gc_content.png
+SRR3218716_1_fastqc/Images/per_base_n_content.png
+SRR3218716_1_fastqc/Images/sequence_length_distribution.png
+SRR3218716_1_fastqc/Images/duplication_levels.png
+SRR3218716_1_fastqc/Images/kmer_profiles.png
+SRR3218716_1_fastqc/summary.txt
+SRR3218716_1_fastqc/fastqc_report.html
+SRR3218716_1_fastqc/fastqc_data.txt
+SRR3218716_1_fastqc.zip
+SRR3218716_2_fastqc/
+SRR3218716_2_fastqc/Icons/
+SRR3218716_2_fastqc/Icons/error.png
+SRR3218716_2_fastqc/Icons/fastqc_icon.png
+SRR3218716_2_fastqc/Icons/tick.png
+SRR3218716_2_fastqc/Icons/warning.png
+SRR3218716_2_fastqc/Images/
+SRR3218716_2_fastqc/Images/per_base_quality.png
+SRR3218716_2_fastqc/Images/per_sequence_quality.png
+SRR3218716_2_fastqc/Images/per_base_sequence_content.png
+SRR3218716_2_fastqc/Images/per_base_gc_content.png
+SRR3218716_2_fastqc/Images/per_sequence_gc_content.png
+SRR3218716_2_fastqc/Images/per_base_n_content.png
+SRR3218716_2_fastqc/Images/sequence_length_distribution.png
+SRR3218716_2_fastqc/Images/duplication_levels.png
+SRR3218716_2_fastqc/Images/kmer_profiles.png
+SRR3218716_2_fastqc/summary.txt
+SRR3218716_2_fastqc/fastqc_report.html
+SRR3218716_2_fastqc/fastqc_data.txt
+SRR3218716_2_fastqc.zip

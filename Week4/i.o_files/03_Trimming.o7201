@@ -1,0 +1,108 @@
+setting asax scratch directory
+ 
+============================================================
+=====         Summary of your script job               =====
+============================================================
+  The script file is: 03_Trimming.sh
+  The time limit is 150:00:00 HH:MM:SS.
+  The target directory is: /home/aubats001/CBC/Week4
+  The working directory is:  /scratch-local/aubats001.03_Trimming.7201.asax-pbs1
+  The memory limit is: 12gb
+  The job will start running after: 202509091653.54
+  Job Name: 03_Trimming
+  Queue: -q medium
+  Constraints: 
+  Using  6  cores on master node  asax035.asc.edu
+  Node list:  asax035.asc.edu asax035.asc.edu asax035.asc.edu asax035.asc.edu asax035.asc.edu asax035.asc.edu
+  Cores:  6
+  Command typed:
+/scripts/run_script 03_Trimming.sh     
+  Queue submit command:
+qsub -q medium -j oe -N 03_Trimming -a 202509091653.54 -r n -M ats0100@auburn.edu -l walltime=150:00:00 -l select=ncpus=6:mpiprocs=6:mem=12000mb 
+--2025-09-09 16:54:07--  https://raw.githubusercontent.com/usadellab/Trimmomatic/main/adapters/TruSeq3-PE.fa
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.109.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 94 [text/plain]
+Saving to: ‘TruSeq3-PE.fa’
+
+     0K                                                       100% 4.90M=0s
+
+2025-09-09 16:54:07 (4.90 MB/s) - ‘TruSeq3-PE.fa’ saved [94/94]
+
+Processing sample: SRR3218716
+  R1: /scratch/aubats001/Felis_catus/RawData/SRR3218716_1.fastq
+  R2: /scratch/aubats001/Felis_catus/RawData/SRR3218716_2.fastq
+TrimmomaticPE: Started with arguments:
+ -threads 8 -phred33 /scratch/aubats001/Felis_catus/RawData/SRR3218716_1.fastq /scratch/aubats001/Felis_catus/RawData/SRR3218716_2.fastq /scratch/aubats001/Felis_catus/CleanData/SRR3218716_1_paired.fastq.gz /scratch/aubats001/Felis_catus/CleanData/SRR3218716_1_unpaired.fastq.gz /scratch/aubats001/Felis_catus/CleanData/SRR3218716_2_paired.fastq.gz /scratch/aubats001/Felis_catus/CleanData/SRR3218716_2_unpaired.fastq.gz ILLUMINACLIP:/scratch/aubats001/Felis_catus/Adapters:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java.io.FileNotFoundException: /scratch/aubats001/Felis_catus/Adapters (Is a directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.usadellab.trimmomatic.fasta.FastaParser.parse(FastaParser.java:54)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.loadSequences(IlluminaClippingTrimmer.java:110)
+	at org.usadellab.trimmomatic.trim.IlluminaClippingTrimmer.makeIlluminaClippingTrimmer(IlluminaClippingTrimmer.java:71)
+	at org.usadellab.trimmomatic.trim.TrimmerFactory.makeTrimmer(TrimmerFactory.java:32)
+	at org.usadellab.trimmomatic.Trimmomatic.createTrimmers(Trimmomatic.java:59)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:552)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Input Read Pairs: 42845814 Both Surviving: 40268150 (93.98%) Forward Only Surviving: 1142697 (2.67%) Reverse Only Surviving: 706364 (1.65%) Dropped: 728603 (1.70%)
+TrimmomaticPE: Completed successfully
+Specified output directory 'PostCleanQuality' does not exist
+✅ Trimming + QC finished. Results in:
+   /scratch/aubats001/Felis_catus/CleanData
+   PostCleanQuality
+tar: Removing leading `/' from member names
+/scratch/aubats001/Felis_catus//Adapters/
+/scratch/aubats001/Felis_catus//Adapters/TruSeq3-PE.fa
+tar: Removing leading `/' from hard link targets
+/scratch/aubats001/Felis_catus//CleanData/
+/scratch/aubats001/Felis_catus//CleanData/SRR3218716_1_paired.fastq.gz
+/scratch/aubats001/Felis_catus//CleanData/SRR3218716_1_unpaired.fastq.gz
+/scratch/aubats001/Felis_catus//CleanData/SRR3218716_2_paired.fastq.gz
+/scratch/aubats001/Felis_catus//CleanData/SRR3218716_2_unpaired.fastq.gz
+/scratch/aubats001/Felis_catus//RawData/
+/scratch/aubats001/Felis_catus//RawData/SRR3218716_1.fastq
+/scratch/aubats001/Felis_catus//RawData/SRR3218716_2.fastq
+/scratch/aubats001/Felis_catus//RawDataQuality/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc.zip
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Icons/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Icons/error.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Icons/fastqc_icon.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Icons/tick.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Icons/warning.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/per_base_quality.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/per_sequence_quality.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/per_base_sequence_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/per_base_gc_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/per_base_n_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/sequence_length_distribution.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/duplication_levels.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/Images/kmer_profiles.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/summary.txt
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/fastqc_report.html
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_1_fastqc/fastqc_data.txt
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc.zip
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Icons/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Icons/error.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Icons/fastqc_icon.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Icons/tick.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Icons/warning.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/per_base_quality.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/per_sequence_quality.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/per_base_sequence_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/per_base_gc_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/per_sequence_gc_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/per_base_n_content.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/sequence_length_distribution.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/duplication_levels.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/Images/kmer_profiles.png
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/summary.txt
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/fastqc_report.html
+/scratch/aubats001/Felis_catus//RawDataQuality/SRR3218716_2_fastqc/fastqc_data.txt
+/scratch/aubats001/Felis_catus//RawDataQuality/RawDataQuality.tar.gz
