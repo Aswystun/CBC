@@ -85,54 +85,135 @@ MyID=aubats001
 
 
 WD=/scratch/${MyID}/Felis_catus
-DD=/scratch/${MyID}/Felis_catus/RawData
-CD=/scratch/${MyID}/Felis_catus/CleanData
-PCQ=PostCleanQuality
+RAWDATA=/scratch/${MyID}/Felis_catus/RawData
+CLEAN=/scratch/${MyID}/Felis_catus/CleanData
+QC=PostCleanQuality
+ADAPTERS=/scratch/${MyID}/Felis_catus/Adapters
 
-#adapters= NEED ADAPTERS
+
+mkdir -p ${CLEAN}
+mkdir -p ${QC}
+mkdir -p $ADAPTERS
 
 
-mkdir ${CD}
-mkdir ${WD}/${PCQ}
+
+# Download adapters from Trimmomatic GitHub
+cd ${ADAPTERS}
+wget https://raw.githubusercontent.com/usadellab/Trimmomatic/main/adapters/TruSeq3-PE.fa
+cd ${WD}
+ADAPTER3=/scratch/${MyID}/Felis_catus/Adapters/TruSeq3-PE.fa
 
 ## Move to Raw Data Directory
-cd ${DD}
+cd ${RAWDATA}
 
 ### Make list of file names to Trim
+for R1 in $RAWDATA/*_1.fastq*; do
+    # Skip if no files matched
+    [ -e "$R1" ] || { echo "No input FASTQ files found in $RAWDATA"; exit 1; }
 
-ls | grep ".fastq" |cut -d "_" -f 1 | sort | uniq > list
+    # Infer R2 filename
+    R2=${R1/_1.fastq/_2.fastq}
+    base=$(basename "$R1" | sed 's/_1\.fastq.*//')
 
+    echo "Processing sample: $base"
+    echo "  R1: $R1"
+    echo "  R2: $R2"
 
-# Need to relative path the adapters
-#cp /home/${MyID}/class_shared/AdaptersToTrim_All.fa .
+    trimmomatic PE -threads 8 -phred33 \
+        "$R1" "$R2" \
+        "$CLEAN/${base}_1_paired.fastq.gz" "$CLEAN/${base}_1_unpaired.fastq.gz" \
+        "$CLEAN/${base}_2_paired.fastq.gz" "$CLEAN/${base}_2_unpaired.fastq.gz" \
+        ILLUMINACLIP:$ADAPTERS:2:30:10 \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 
+    fastqc -t 8 -o "$QC" \
+        "$CLEAN/${base}_1_paired.fastq.gz" \
+        "$CLEAN/${base}_2_paired.fastq.gz"
+done
 
-while read i
-do
-
-
-   java -jar /apps/x86-64/apps/spack_0.19.1/spack/opt/spack/linux-rocky8-zen3/gcc-11.3.0/trimmomatic-0.39-iu723m2xenra563gozbob6ansjnxmnfp/bin/trimmomatic-0.39.jar   \
-PE -threads 6 -phred33 \
-    "$i"_1.fastq "$i"_2.fastq  \
-    ${CD}/"$i"_1_paired.fastq ${CD}/"$i"_1_unpaired.fastq  ${CD}/"$i"_2_paired.fastq ${CD}/"$i"_2_unpaired.fastq \
-    ILLUMINACLIP:AdaptersToTrim_All.fa:2:35:10 HEADCROP:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:6:30 MINLEN:36
-
-
-
-fastqc ${CD}/"$i"_1_paired.fastq --outdir=${WD}/${PCQ}
-fastqc ${CD}/"$i"_2_paired.fastq --outdir=${WD}/${PCQ}
-
-done<list			# This is the end of the loop
-
-#########################  Now compress your results files from the Quality Assessment by FastQC 
-## move to the directory with the cleaned data
-cd ${WD}/${PCQ}
-
+# return that the script is completed
+echo "✅ Trimming + QC finished. Results in:"
+echo "   $CLEAN"
+echo "   $QC"
 
 ```
 
+## 4. [Alignment and Indexing](https://github.com/Aswystun/CBC/blob/main/Week4/04_STAR_Aligner.sh)
+```bash
+#!/bin/bash
 
-## 4. [Assembly](https://github.com/Aswystun/CBC/blob/main/Week4/04_Assembly.sh)
+
+set -e
+source /apps/profiles/modules_asax.sh.dyn
+module load star/2.7.6a
+which STAR
+
+
+MyID=aubats001
+WD=/scratch/${MyID}/Felis_catus
+CLEAN=${WD}/CleanData
+REFERENCE=${WD}/Reference_Genome
+REFGENOME=${REFERENCE}/genome.fa
+GTFD=${WD}/genes
+GTF=${GTFD}/genes.gtf
+STAR=${WD}/aligned #Output DIR
+
+mkdir -p ${REFERENCE} ${GTFD} ${STAR}
+mkdir -p ${STAR}/STAR_index
+
+cd ${REFERENCE}
+wget ftp://ftp.ensembl.org/pub/release-109/fasta/felis_catus/dna/Felis_catus.Felis_catus_9.0.dna.toplevel.fa.gz
+gunzip Felis_catus.Felis_catus_9.0.dna.toplevel.fa.gz
+mv Felis_catus.Felis_catus_9.0.dna.toplevel.fa genome.fa
+
+cd ${GTFD}
+
+wget ftp://ftp.ensembl.org/pub/release-109/gtf/felis_catus/Felis_catus.Felis_catus_9.0.109.gtf.gz
+gunzip Felis_catus.Felis_catus_9.0.109.gtf.gz
+mv Felis_catus.Felis_catus_9.0.109.gtf genes.gtf
+
+
+READ1_FASTQ=${CLEAN}/SRR3218716_1_paired.fastq.gz
+
+read_length=$(zcat ${READ1_FASTQ} | sed -n '2p' | wc -m)
+sjdbOverhang=$((read_length - 2))
+echo "Calculated sjdbOverhang: ${sjdbOverhang}"
+
+cd ${STAR}
+
+# Generating Genome Index
+STAR --runThreadN 8 \
+     --runMode genomeGenerate \
+     --genomeDir ${STAR}/STAR_index \
+     --genomeFastaFiles ${REFGENOME} \
+     --sjdbGTFfile ${GTF} \
+     --sjdbOverhang ${sjdbOverhang}
+
+
+# 5. Align reads with STAR
+FORWARD=${CLEAN}/SRR3218716_1_paired.fastq.gz
+REVERSE=${CLEAN}/SRR3218716_2_paired.fastq.gz
+
+# Align reads
+STAR --runThreadN 8 \
+     --genomeDir ${STAR}/STAR_index \
+     --readFilesIn ${FORWARD} ${REVERSE} \
+     --readFilesCommand zcat \
+     --outSAMtype BAM SortedByCoordinate \
+     --outFileNamePrefix ${STAR}/SRR3218716_
+
+#output should be:
+#sample_Aligned.sortedByCoord.out.bam
+
+
+# Index BAM file for TERRACE
+module load samtools/1.18
+samtools index ${STAR}/SRR3218716_Aligned.sortedByCoord.out.bam
+
+```
+
+## 4b. [Assembly](https://github.com/Aswystun/CBC/blob/main/Week4/04_Assembly.sh) **OPTIONAL** 
+#### This step is not needed, but could be useful for further downstream analysis 
 
 ```bash
 #!/bin/bash
@@ -175,21 +256,32 @@ spades.py \
 cp $AD/contigs.fasta $AD/${SRR_ID}_assembly.fasta
 
 echo "Assembly complete. Output saved to $AD/${SRR_ID}_assembly.fasta"
-```
+``` 
 
-
-
-# Moving Data from ASC to PC:
-
-```bash
-
-
-```
 
 
 ## 5. TERRACE [Installation](https://bioconda.github.io/recipes/terrace/README.html)
 
-#### 5a. Option 1 
+
+
+#### 5a. Option 1 - **What we will be doing** - Using TERRACE on the ASC
+
+```bash
+#!/bin/bash
+
+cd /scratch/aubats001/Felis_catus
+
+
+module load miniforge3   # or anaconda3, if available
+eval "$(conda shell.bash hook)"  # may be needed on some clusters
+conda install mamba -n base -c conda-forge
+conda create -n terrace_env -c conda-forge -c bioconda terrace
+conda activate terrace_env
+
+terrace -i <input.bam> -o <output.gtf> -fa <reference-genome.fa> --read_length <length-of-paired-end-reads> -r [reference_annotation.gtf] -fe [feature_file] [options]
+```
+
+#### 5b. Option 2 - move files from ASC to PC and:
 
 You will need a conda-compatible package manager, like mamba:
 
@@ -229,7 +321,7 @@ mamba create --name myenvname terrace
 
 
 
-#### 5b. Option 2
+#### 5c. Option 3 - move files from ASC to PC and:
 Installation with Docker container:
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/terrace/README.html)
 
@@ -238,7 +330,9 @@ Installation with Docker container:
 
 
 
-## [Usage](https://github.com/Shao-Group/TERRACE?tab=readme-ov-file#usage)
+## 6. [Usage](https://github.com/Shao-Group/TERRACE?tab=readme-ov-file#usage)
+
+
 
 
 
@@ -250,17 +344,6 @@ The input.bam is the read alignment file generated by some RNA-seq aligner, (for
 ```bash
 samtools sort input.bam > input.sort.bam
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 
