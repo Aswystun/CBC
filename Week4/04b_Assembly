@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # ============================================================================
-# Butterfly Genomics Project: Genome Assembly with SPAdes
-# ============================================================================
 # Purpose: Assemble genome from SRR25297534 trimmed paired-end FASTQ data, By Samira S.
 # Recommended ASC parameters:
 #   - Cores: 6+
@@ -16,9 +14,9 @@ source /apps/profiles/modules_asax.sh.dyn
 module load spades
 
 # Define user and project variables
-MyID=aubsxs003
-ProjectName=ButterflyGenomics
-SRR_ID=SRR25297534
+MyID=aubats001
+ProjectName=Felis_catus
+SRR_ID=SRR3218716
 
 # Define directories
 WD=/scratch/$MyID/$ProjectName
