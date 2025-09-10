@@ -277,6 +277,13 @@ source your .bashrc
 source ~/.bashrc
 ```
 
+Now you can create TERRACE environment:
+```bash
+conda install -y mamba -n base -c conda-forge
+mamba create -y -n terrace_env -c conda-forge -c bioconda terrace
+conda activate terrace_env
+
+```
 
 ## 5. [TERRACE](https://github.com/Aswystun/CBC/blob/main/Week4/05_TERRACE.sh)
 
@@ -382,6 +389,7 @@ mamba create --name myenvname terrace
 #### 5c. Option 3 - move files from ASC to PC and:
 Installation with Docker container:
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/terrace/README.html)
+
 
 
 
