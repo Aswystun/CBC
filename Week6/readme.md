@@ -88,4 +88,4 @@ paras -i paras/data/sequences/AB01_genome.fasta -o ../results
 ```
 
 
-[results]()
+[results](https://github.com/Aswystun/CBC/blob/main/Week6/run_paras_results.txt)
