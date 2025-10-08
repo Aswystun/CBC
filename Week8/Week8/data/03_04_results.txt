@@ -1,0 +1,353 @@
+so,
+
+my initial 03_unit_map_creation.py script gave me useful information on how many terms may have synonymous terms that could be included into our dataset.
+
+# Suggested CATEGORIES = {
+#    "salt": 7255,
+#    "ground beef": 5375,
+#    ",": 4160,
+#    "pepper": 4127,
+#    "water": 3837,
+#    "onion, chopped": 2539,
+#    "worcestershire sauce": 1916,
+#    "olive oil": 1775,
+#    "chopped onion": 1726,
+#    "brown sugar": 1536,
+#    "sugar": 1519,
+#    "chili powder": 1493,
+#    "milk": 1474,
+#    "butter": 1457,
+#    "flour": 1317,
+#    "soy sauce": 1288,
+#    "onion": 1258,
+#    "garlic powder": 1121,
+#    "oil": 1030,
+#    "ketchup": 1003,
+#    "eggs": 1003,
+#    "and pepper": 973,
+#    "vegetable oil": 942,
+#    "lean ground beef": 933,
+#    "egg": 933,
+#    "garlic, minced": 922,
+#    "black pepper": 921,
+#    "sour cream": 883,
+#    "and pepper to taste": 875,
+#    "cornstarch": 793,
+#}
+
+
+This gave me a good idea of the most used ingredients in recipes that used ground beef, but I also wanted to expand that to all red meats.
+So, I ran 03b_unit_map_creation.py, which focused only on the red meat ingredients, and found this:
+
+
+# Most common red meat ingredients in NER:
+#     "ground beef": 5375,
+#     "hamburger": 1286,
+#     "lean ground beef": 933,
+#     "beef broth": 634,
+#     "ground pork": 478,
+#     "ground chuck": 476,
+#     "beef stock": 295,
+#     "pork and beans": 268,
+#     "hamburger meat": 247,
+#     "beef bouillon": 159,
+#     "pork sausage": 157,
+#     "ground lamb": 123,
+#     "bulk pork sausage": 108,
+#     "beef": 108,
+#     "steak sauce": 105,
+#     "pork tenderloin": 101,
+#     "pork chops": 96,
+#     "lean ground beef (90% lean)": 92,
+#     "corned beef": 87,
+#     "steak": 81,
+#     "extra lean ground beef": 75,
+#     "beef consomme": 75,
+#     "beef bouillon granules": 71,
+#     "ground beef, browned": 71,
+#     "ground beef, browned and drained": 69,
+#     "round steak": 68,
+#     "beef stew meat": 67,
+#     "pork": 66,
+#     "ground sirloin": 65,
+#     "dried beef": 58,
+
+
+This led me to my first unit_map:
+
+CATEGORIES = {
+    "Meat": {"beef", "ground beef", "chuck", "hamburger", "meat", "lamb", "steak", "sirloin", }
+    "Seasoning": {"salt", "pepper", "chili powder", "black pepper", "and pepper", "and pepper to taste", "garlic powder", "onion, chopped", "chopped onion", "onion", "garlic, minced"},
+    "Dairy": {"milk", "sour cream", "butter", "cream of mushroom soup"},
+    "Sauce": {"worcestershire sauce", "soy sauce", "ketchup"},
+    "Oil": {"olive oil", "oil", "vegetable oil"},
+    "Egg": {"eggs", "egg"},
+    "Flour": {"flour"},
+    "Water": {"water"},
+    "Sour Cream": {"sour cream"},
+    "Cornstarch": {"cornstarch"},
+}
+
+Then after running 04_cleaning.py which groups all the most used ingredients in each category and then counts how many times they are used,
+I got:
+
+
+--- Analysis Complete (scanned 200000 recipes) ---
+
+Most common terms found in the NER column for each baking category:
+
+--- Meat ---
+  - ground beef: 6543 times
+  - hamburger: 1966 times
+  - beef: 1313 times
+  - beef broth: 1121 times
+  - lean ground beef: 957 times
+  - ground chuck: 558 times
+  - crabmeat: 477 times
+  - crab meat: 435 times
+  - beef stock: 371 times
+  - ground meat: 330 times
+--------------------
+
+--- Seasoning ---
+  - salt: 84010 times
+  - onion: 36139 times
+  - pepper: 17562 times
+  - onions: 8455 times
+  - Salt: 6019 times
+  - green pepper: 6018 times
+  - black pepper: 5409 times
+  - green onions: 4979 times
+  - red pepper: 4303 times
+  - unsalted butter: 4168 times
+--------------------
+
+--- Dairy ---
+  - butter: 45912 times
+  - milk: 33377 times
+  - sour cream: 11402 times
+  - buttermilk: 4483 times
+  - cream of mushroom soup: 3862 times
+  - peanut butter: 3646 times
+  - Butter: 3321 times
+  - condensed milk: 2118 times
+  - Milk: 1739 times
+  - coconut milk: 806 times
+--------------------
+
+--- Sauce ---
+  - soy sauce: 5830 times
+  - Worcestershire sauce: 5775 times
+  - ketchup: 2317 times
+  - worcestershire sauce: 233 times
+  - Soy Sauce: 117 times
+  - tomato ketchup: 89 times
+  - Worcestershire Sauce: 81 times
+  - Ketchup: 57 times
+  - light soy sauce: 34 times
+  - Soy sauce: 31 times
+--------------------
+
+--- Oil ---
+  - olive oil: 15833 times
+  - oil: 8115 times
+  - vegetable oil: 7599 times
+  - boiling water: 3517 times
+  - canola oil: 2324 times
+  - extra virgin olive oil: 1964 times
+  - extra-virgin olive oil: 1718 times
+  - cooking oil: 1517 times
+  - sesame oil: 1463 times
+  - salad oil: 1418 times
+--------------------
+
+--- Egg ---
+  - eggs: 38907 times
+  - egg: 15262 times
+  - egg whites: 2951 times
+  - egg yolks: 2820 times
+  - Eggs: 1908 times
+  - Egg: 988 times
+  - egg yolk: 971 times
+  - egg noodles: 775 times
+  - eggplant: 615 times
+  - egg white: 319 times
+--------------------
+
+--- Flour ---
+  - flour: 44421 times
+  - Flour: 1719 times
+  - whole wheat flour: 1268 times
+  - flour tortillas: 1050 times
+  - cake flour: 967 times
+  - bread flour: 491 times
+  - all-purpose flour: 301 times
+  - white flour: 222 times
+  - cornflour: 159 times
+  - Whole Wheat Flour: 153 times
+--------------------
+
+--- Water ---
+  - water: 29559 times
+  - cold water: 2335 times
+  - Water: 1384 times
+  - water chestnuts: 1245 times
+  - warm water: 949 times
+  - hot water: 364 times
+  - watermelon: 126 times
+  - very warm water: 60 times
+  - watercress: 57 times
+  - sparkling water: 51 times
+--------------------
+
+--- Sour Cream ---
+  (No terms found for this category in the sample)
+--------------------
+
+--- Cornstarch ---
+  - cornstarch: 5407 times
+  - Cornstarch: 205 times
+  - cornstarch +: 3 times
+  - cornstarch roux: 2 times
+  - cornstarch]: 1 times
+  - TB cornstarch: 1 times
+  - cornstarch pudding: 1 times
+  - rounded cornstarch: 1 times
+  - CORNSTARCH: 1 times
+  - -Cornstarch: 1 times
+--------------------
+
+There are some things to address:
+for Meat: we don't need crab meat
+for Seasoning: we don't need unsalted butter
+for Dairy: we don't need peanut butter or coconut milk
+for Oil: don't need boiling water, 
+for Egg: don't need eggplant
+for Water: don't need water chestnuts, watermelon, or sparkling water
+
+So I created 04b_cleaning.py to create exclusions:
+
+--- Analysis Complete (scanned 200000 recipes) ---
+
+Most common terms found in the NER column for each baking category:
+
+--- Meat ---
+  - ground beef: 6543 times
+  - hamburger: 1966 times
+  - beef: 1313 times
+  - beef broth: 1121 times
+  - lean ground beef: 957 times
+  - ground chuck: 558 times
+  - beef stock: 371 times
+  - ground meat: 330 times
+  - lamb: 263 times
+  - beef bouillon: 218 times
+--------------------
+
+--- Seasoning ---
+  - salt: 84010 times
+  - onion: 36139 times
+  - pepper: 17562 times
+  - onions: 8455 times
+  - Salt: 6019 times
+  - green pepper: 6018 times
+  - black pepper: 5409 times
+  - green onions: 4979 times
+  - red pepper: 4303 times
+  - chili powder: 4130 times
+--------------------
+
+--- Dairy ---
+  - butter: 45912 times
+  - milk: 33377 times
+  - sour cream: 11402 times
+  - buttermilk: 4483 times
+  - unsalted butter: 4168 times
+  - cream of mushroom soup: 3862 times
+  - Butter: 3321 times
+  - condensed milk: 2118 times
+  - Milk: 1739 times
+  - cold milk: 478 times
+--------------------
+
+--- Sauce ---
+  - soy sauce: 5830 times
+  - Worcestershire sauce: 5775 times
+  - ketchup: 2317 times
+  - worcestershire sauce: 233 times
+  - Soy Sauce: 117 times
+  - tomato ketchup: 89 times
+  - Worcestershire Sauce: 81 times
+  - Ketchup: 57 times
+  - light soy sauce: 34 times
+  - Soy sauce: 31 times
+--------------------
+
+--- Oil ---
+  - olive oil: 15833 times
+  - oil: 8115 times
+  - vegetable oil: 7599 times
+  - canola oil: 2324 times
+  - extra virgin olive oil: 1964 times
+  - extra-virgin olive oil: 1718 times
+  - cooking oil: 1517 times
+  - sesame oil: 1463 times
+  - salad oil: 1418 times
+  - Olive Oil: 1275 times
+--------------------
+
+--- Egg ---
+  - eggs: 38907 times
+  - egg: 15262 times
+  - egg whites: 2951 times
+  - egg yolks: 2820 times
+  - Eggs: 1908 times
+  - Egg: 988 times
+  - egg yolk: 971 times
+  - egg noodles: 775 times
+  - egg white: 319 times
+  - egg substitute: 265 times
+--------------------
+
+--- Flour ---
+  - flour: 44421 times
+  - Flour: 1719 times
+  - whole wheat flour: 1268 times
+  - flour tortillas: 1050 times
+  - cake flour: 967 times
+  - bread flour: 491 times
+  - all-purpose flour: 301 times
+  - white flour: 222 times
+  - cornflour: 159 times
+  - Whole Wheat Flour: 153 times
+--------------------
+
+--- Water ---
+  - water: 29559 times
+  - boiling water: 3517 times
+  - cold water: 2335 times
+  - Water: 1384 times
+  - warm water: 949 times
+  - hot water: 364 times
+  - Boiling Water: 65 times
+  - very warm water: 60 times
+  - watercress: 57 times
+  - sparkling water: 51 times
+--------------------
+
+--- Cornstarch ---
+  - cornstarch: 5407 times
+  - Cornstarch: 205 times
+  - cornstarch +: 3 times
+  - cornstarch roux: 2 times
+  - cornstarch]: 1 times
+  - TB cornstarch: 1 times
+  - rounded cornstarch: 1 times
+  - CORNSTARCH: 1 times
+  - -Cornstarch: 1 times
+  - cornstarch mixed: 1 times
+--------------------
+
+
+
+
