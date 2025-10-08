@@ -37,3 +37,6 @@ to use the app:
 streamlit run 08_app.py
 ```
 then it will give you a local url, which you can copy and paste into the web browser, and it will graph the amount of emissions each recipe in that list uses. 
+
+
+![Example of streamlit app working with emessions data](Streamlit_example.png)
